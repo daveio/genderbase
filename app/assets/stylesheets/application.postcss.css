@@ -243,6 +243,36 @@
     background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--hero-tint) 50%, transparent), transparent);
   }
 
+  /* Account pages (Devise): the page-hero glow without its bottom hairline. */
+  .auth-page {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  }
+
+  .auth-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(60% 70% at 50% 0%, color-mix(in oklab, var(--color-secondary) 16%, transparent) 0%, transparent 65%);
+  }
+
+  /* Muted text link for secondary actions under a form. */
+  .link-quiet {
+  color: color-mix(in oklab, var(--color-base-content) 70%, transparent);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--color-base-content) 25%, transparent);
+  text-underline-offset: 0.2em;
+  transition: color 150ms ease, text-decoration-color 150ms ease;
+  }
+
+  .link-quiet:hover {
+  color: var(--color-accent);
+  text-decoration-color: var(--color-accent);
+  }
+
   /* Card with a gradient hairline along its top edge. */
   .edge-card {
     position: relative;

@@ -65,7 +65,7 @@ module AuthenticationHelper
       visit new_responder_session_path
 
       # Verify we're on the login page
-      assert_selector "h2", text: "Log in", wait: 5
+      assert_selector "h1", text: "Log in", wait: 5
 
       # Fill in the form
       within("#new_responder") do

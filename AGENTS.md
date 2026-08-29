@@ -67,6 +67,7 @@ The project uses `mise` for tool versioning and task management.
 
 - Uses **Devise** with Argon2 password hashing.
 - **Responders** are the primary authenticated user type.
+- Devise views live in `app/views/devise/` (sessions, passwords, registrations, shared). They use the same shell as the rest of the site: `auth-page` glow, `type-eyebrow`/`type-display` heading, an `edge-card` form with DaisyUI `fieldset`/`label`/`input`, and `link-quiet` secondary links. `test/test_helper.rb` waits on `h1` "Log in" and `form#new_responder` when signing in.
 
 ## Testing Guidelines
 

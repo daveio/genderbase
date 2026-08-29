@@ -1,0 +1,16 @@
+<% if resource.errors.any? %>
+  <div id="error_explanation" role="alert" class="alert alert-error alert-soft items-start" data-turbo-temporary>
+    <div>
+      <p class="font-semibold">
+        <%= I18n.t("errors.messages.not_saved",
+                   count: resource.errors.count,
+                   resource: resource.class.model_name.human.downcase) %>
+      </p>
+      <ul class="list-disc ml-5 mt-1 text-sm">
+        <% resource.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
