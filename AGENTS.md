@@ -43,6 +43,7 @@ The project uses `mise` for tool versioning and task management.
 - **Security Scan**: `mise run ci:brakeman`
 - **Full CI Check**: `mise run ci`
 - **Multi-language Linting**: `trunk check` (runs Biome, Stylelint, Gitleaks, etc.)
+- **Biome config**: one self-contained `biome.json` at the repo root — do not split it with `extends` or move it under `.trunk/configs/`. Trunk runs each linter batch in a temp sandbox that contains only the target files plus that one file (no `.git`, no `.gitignore`), so `extends` and `vcs.useIgnoreFile` fail there, and because Biome exits 1 on a config error and Trunk accepts exit 1, the failure shows up as "no issues". Ignore paths with `!!` entries in `files.includes` instead. `css.parser.tailwindDirectives` is on for the Tailwind 4 stylesheet. To debug a suspicious pass, run `trunk check -v` and read the per-invocation logs (command, exit code, stderr) in `~/.cache/trunk/repos/<hash>/out/*.yaml`.
 
 ## Architecture & Patterns
 

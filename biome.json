@@ -1,7 +1,61 @@
 {
-  "$schema": "./biome_schema.json",
-  "extends": [".trunk/configs/biome.json"],
+  "$schema": "node_modules/@biomejs/biome/configuration_schema.json",
   "files": {
-    "ignore": [".trunk"]
+    "includes": [
+      "**",
+      "!!.trunk",
+      "!!app/assets/builds",
+      "!!coverage",
+      "!!log",
+      "!!public/assets",
+      "!!storage",
+      "!!tmp"
+    ]
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  },
+  "css": {
+    "formatter": {
+      "quoteStyle": "single"
+    },
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
+  "formatter": {
+    "attributePosition": "auto",
+    "bracketSpacing": true,
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 120,
+    "useEditorconfig": true
+  },
+  "graphql": {
+    "formatter": {
+      "quoteStyle": "single"
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "semicolons": "asNeeded",
+      "trailingCommas": "none"
+    }
+  },
+  "json": {
+    "parser": {
+      "allowComments": false,
+      "allowTrailingCommas": false
+    }
+  },
+  "linter": {
+    "enabled": true
   }
 }
