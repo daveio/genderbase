@@ -56,7 +56,10 @@ The project uses `mise` for tool versioning and task management.
 
 ### Frontend
 
-- **CSS**: Tailwind CSS with DaisyUI. Configured in `tailwind.config.js` and `app/assets/stylesheets/`.
+- **CSS**: Tailwind CSS 4 with DaisyUI 5, all configured in CSS (there is no `tailwind.config.js`). `app/assets/stylesheets/application.postcss.css` loads the plugins via `@plugin`, defines the single `genderbase` dark theme (colours derived from the logo gradient, copper to indigo), registers the fonts, and holds the shared component classes (`type-display`, `type-eyebrow`, `ink-gradient`, `glow-hero`, `page-hero`, `edge-card`, `site-nav`, `site-footer`).
+- **Fonts**: Sora (body/UI) and Fraunces (display, `h1` and `.type-display`) from `@fontsource-variable`. `postcss.config.js` uses `postcss-import` to inline their CSS and `postcss-url` to copy the woff2 files into `app/assets/builds/fonts/`, which Propshaft then digests. Do not reference `node_modules` font paths directly.
+- **Page heroes**: marketing pages under `app/views/home/` open with `render "shared/page_hero", eyebrow:, title:, lead:, tone:` (`tone` is `primary`, `secondary`, or `accent`; anything else raises). The partial also sets the document title unless the view already did.
+- **Flash**: `shared/_flash` renders `notice`/`alert` as DaisyUI alerts. Views must not render `notice` themselves. The `.notice` class is relied on by `test/test_helper.rb`.
 - **JS**: Stimulus controllers in `app/javascript/controllers/`. Bundled via `esbuild`.
 - **Views**: ERB templates. JSON APIs via JBuilder.
 

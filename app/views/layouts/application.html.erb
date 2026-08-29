@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="genderbase">
 
 <head>
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -12,7 +12,7 @@
   <meta name="apple-mobile-web-app-title" content="Genderbase" />
   <meta name="application-name" content="Genderbase" />
   <meta name="author" content="Genderbase" />
-  <meta name="color-scheme" content="dark light" />
+  <meta name="color-scheme" content="dark" />
   <meta name="description" content="Educational resources about topics of gender. Contains a knowledge base and a way to ask questions of vetted experts." />
   <meta name="format-detection" content="telephone=yes" />
   <meta name="keywords" content="gender, education, resources, genderbase" />
@@ -30,7 +30,7 @@
   <meta name="og:url" content="<%= canonical_url %>" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#000000">
+  <meta name="theme-color" content="#13111f">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= yield :head %>
@@ -41,11 +41,11 @@
   <link rel="apple-touch-icon" href="<%= image_url("genderbase-logo.png") %>" />
 </head>
 
-<body>
+<body class="min-h-dvh flex flex-col">
   <%= render 'shared/header' %>
-  <div class="<%= responder_signed_in? ? "pt-16" : "pt-6" %>">
+  <main class="grow">
     <%= yield %>
-  </div>
+  </main>
   <%= render 'shared/footer' %>
 </body>
 

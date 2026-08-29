@@ -1,2 +1,16 @@
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<%
+  # Devise and the controllers only ever set :notice and :alert. The `notice`
+  # class is a contract with test/test_helper.rb, which waits on `.notice`.
+  flash_messages = { notice: flash[:notice], alert: flash[:alert] }.compact_blank
+%>
+<% if flash_messages.any? %>
+  <div class="container mx-auto px-4 sm:px-6 md:px-8 pt-6 space-y-3">
+    <% flash_messages.each do |kind, message| %>
+      <% is_alert = kind == :alert %>
+      <div role="<%= is_alert ? "alert" : "status" %>"
+           class="alert alert-soft <%= is_alert ? "alert-error" : "alert-success notice" %>">
+        <span><%= message %></span>
+      </div>
+    <% end %>
+  </div>
+<% end %>

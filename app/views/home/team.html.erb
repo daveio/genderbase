@@ -1,16 +1,8 @@
-<section class="hero min-h-[40vh] bg-gradient-to-br from-primary/10 to-base-200 rounded-xl mb-10 flex items-center justify-center shadow-lg">
-  <div class="text-center">
-    <div class="flex justify-center mb-4">
-      <div class="bg-primary/20 rounded-full p-4 inline-block">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m9-4a4 4 0 11-8 0 4 4 0 018 0zm6 4v2a2 2 0 01-2 2h-1.5M3 16v2a2 2 0 002 2h1.5" />
-        </svg>
-      </div>
-    </div>
-    <h1 class="text-4xl font-extrabold text-primary mb-2">Our Team</h1>
-    <p class="text-lg text-base-content/70 max-w-2xl mx-auto">Genderbase is brought to you by a dedicated team passionate about gender education, inclusion, and supporting our community.</p>
-  </div>
-</section>
+<%= render "shared/page_hero",
+           eyebrow: "Team",
+           title: "Our Team",
+           lead: "Genderbase is brought to you by a dedicated team passionate about gender education, inclusion, and supporting our community.",
+           tone: "primary" %>
 
 <div class="container mx-auto px-4 py-8 max-w-5xl">
   <div class="prose lg:prose-xl max-w-none">

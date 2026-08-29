@@ -1,23 +1,43 @@
-<nav class="bg-base-300 shadow-md fixed w-full z-50">
+<%
+  primary_navigation = [
+    ["Home", root_path],
+    ["Knowledge Base", knowledges_path],
+    ["How Do I Say...?", terminologies_path],
+    ["Ask a Question", new_question_path]
+  ]
+%>
+<header class="site-nav sticky top-0 z-50">
   <div class="container mx-auto px-4 sm:px-6 md:px-8">
-    <div class="flex justify-between items-center py-4">
-      <div class="flex items-center">
-        <%= image_tag "genderbase-logo.png", class: "h-10 mr-3" %>
-        <%= link_to "Genderbase", root_path, class: "text-2xl font-bold text-base-content hover:text-accent transition" %>
-      </div>
-      <div class="hidden md:flex items-center space-x-6">
-        <%= link_to "Home", root_path, class: "text-base-content hover:text-accent transition" %>
-        <%= link_to "Knowledge Base", knowledges_path, class: "text-base-content hover:text-accent transition" %>
-        <%= link_to "How Do I Say...?", terminologies_path, class: "text-base-content hover:text-accent transition" %>
-        <%= link_to "Ask a Question", new_question_path, class: "text-base-content hover:text-accent transition" %>
-      </div>
-      <div class="md:hidden">
-        <button class="text-base-content hover:text-accent focus:outline-none">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div class="flex items-center justify-between py-3">
+      <%= link_to root_path, class: "flex items-center gap-3", aria: { label: "Genderbase home" } do %>
+        <%= image_tag "genderbase-logo.svg", alt: "", class: "h-9 w-9" %>
+        <span class="type-display text-2xl">Genderbase</span>
+      <% end %>
+
+      <nav class="hidden md:flex items-center gap-1" aria-label="Primary">
+        <% primary_navigation.each do |label, path| %>
+          <% active = current_page?(path) %>
+          <%= link_to label, path,
+                      class: ["nav-link", ("nav-link-active" if active)],
+                      aria: ({ current: "page" } if active) %>
+        <% end %>
+      </nav>
+
+      <details class="nav-menu md:hidden">
+        <summary class="btn btn-ghost btn-square" aria-label="Open menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
-        </button>
-      </div>
+        </summary>
+        <nav class="nav-menu-panel" aria-label="Primary">
+          <% primary_navigation.each do |label, path| %>
+            <% active = current_page?(path) %>
+            <%= link_to label, path,
+                        class: ["nav-link", ("nav-link-active" if active)],
+                        aria: ({ current: "page" } if active) %>
+          <% end %>
+        </nav>
+      </details>
     </div>
   </div>
-</nav>
+</header>

@@ -1,0 +1,21 @@
+<%# locals: (title:, lead:, eyebrow:, tone: "primary") -%>
+<%
+  # Literal class names so Tailwind's scanner sees them; a dynamic
+  # "text-#{tone}" would silently produce no CSS.
+  tone_classes = {
+    "primary" => { hero: "page-hero-primary", eyebrow: "text-primary" },
+    "secondary" => { hero: "page-hero-secondary", eyebrow: "text-secondary" },
+    "accent" => { hero: "page-hero-accent", eyebrow: "text-accent" }
+  }
+  tone_class = tone_classes.fetch(tone) do
+    raise ArgumentError, "page_hero tone must be one of #{tone_classes.keys.join(', ')}, got #{tone.inspect}"
+  end
+  content_for(:title, "#{title} · Genderbase") unless content_for?(:title)
+%>
+<section class="page-hero <%= tone_class[:hero] %>">
+  <div class="container mx-auto px-4 sm:px-6 md:px-8 py-16 md:py-20 max-w-4xl">
+    <p class="type-eyebrow <%= tone_class[:eyebrow] %>"><%= eyebrow %></p>
+    <h1 class="type-display text-4xl md:text-6xl mt-3"><%= title %></h1>
+    <p class="mt-5 text-lg text-base-content/75 max-w-2xl"><%= lead %></p>
+  </div>
+</section>

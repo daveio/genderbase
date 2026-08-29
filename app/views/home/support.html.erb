@@ -1,26 +1,10 @@
-<section class="hero min-h-[40vh] bg-gradient-to-br from-accent/10 to-base-200 rounded-xl mb-10 flex items-center justify-center shadow-lg">
-  <div class="text-center">
-    <div class="flex justify-center mb-4">
-      <div class="bg-accent/20 rounded-full p-4 inline-block">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <circle cx="12" cy="12" r="10" stroke-width="2" />
-          <circle cx="12" cy="12" r="4" stroke-width="2" />
-          <path stroke-width="2" d="M4.93 4.93l4.24 4.24M19.07 4.93l-4.24 4.24M19.07 19.07l-4.24-4.24M4.93 19.07l4.24-4.24" />
-        </svg>
-      </div>
-    </div>
-    <h1 class="text-4xl font-extrabold text-accent mb-2">Support Center</h1>
-    <p class="text-lg text-base-content/70 max-w-2xl mx-auto">Need help using Genderbase? We're here to assist you with any questions or issues you might encounter.</p>
-  </div>
-</section>
+<%= render "shared/page_hero",
+           eyebrow: "Support",
+           title: "Support Center",
+           lead: "Need help using Genderbase? We're here to assist you with any questions or issues you might encounter.",
+           tone: "accent" %>
 
 <div class="container mx-auto px-4 py-12">
-  <h1 class="text-3xl font-bold mb-6">Support Center</h1>
-
-  <div class="prose lg:prose-xl max-w-4xl mb-10">
-    <p class="text-xl mb-8">Need help using Genderbase? We're here to assist you with any questions or issues you might encounter.</p>
-  </div>
-
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
     <div class="bg-base-200 rounded-xl p-6 text-center flex flex-col items-center">
       <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-4">

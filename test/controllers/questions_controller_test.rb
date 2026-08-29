@@ -25,6 +25,9 @@ class QuestionsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to question_token_url(token: Question.last.token)
+
+    follow_redirect!
+    assert_select ".alert.notice", text: /successfully created/
   end
 
   test "should show question" do
