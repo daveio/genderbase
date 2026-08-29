@@ -91,7 +91,7 @@ USER 1000:1000
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Add healthcheck to ensure container is healthy
-HEALTHCHECK --interval=30s --timeout=5s --start-period=60s --retries=3 CMD curl -f http://localhost:80/ || exit 1
+HEALTHCHECK --interval=30s --timeout=5s --start-period=60s --retries=3 CMD ["sh", "-c", "curl -f http://localhost:80/ || exit 1"]
 
 # Start server via Thruster by default, this can be overwritten at runtime
 EXPOSE 80
