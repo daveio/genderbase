@@ -1,0 +1,8 @@
+# Biome + Trunk configuration
+
+- Single self-contained `biome.json` at the repo root (Biome 2 schema: `files.includes` with `!!` force-ignores, `assist.actions.source.organizeImports`, `css.parser.tailwindDirectives: true`). There is deliberately **no** `.trunk/configs/biome.json` and no `extends`.
+- Trunk pins `biome@2.3.15` in `.trunk/trunk.yaml`; `package.json` has `@biomejs/biome ^2.5.11` (used by `bun x biome` and editors). Both are Biome 2; keep config keys compatible with the older Trunk version.
+- Trunk's Biome plugin: `direct_configs: [biome.json]`, `run: biome check ${target}` (lint) / `biome check --fix` (fmt), `success_codes: [0, 1]`, output parsed by regex. Trunk runs each batch in a temp sandbox holding only the target files + `biome.json` — no `.git`, no `.gitignore`, no `.trunk/configs`. So `extends`, `vcs.enabled`/`useIgnoreFile` break silently (exit 1 on config error → Trunk shows "no issues"). Ignore gitignored build dirs explicitly (`!!app/assets/builds`, `!!coverage`, `!!tmp`, ...).
+- Trunk lints CSS with both Stylelint (`--fix`, formatter) and Biome; Biome only parses the Tailwind 4 stylesheet with `tailwindDirectives` on.
+- Debugging: `trunk check -a --filter=biome --cache=false -v` then read `~/.cache/trunk/repos/<hash>/out/*.yaml` (title, command, run_from sandbox, exit_code, stderr). Trunk's cache key covers `direct_configs` + `affects_cache` (`package.json`, `.editorconfig`) only.
+- Local Biome 2.5.11 also lints HTML/SVG (`public/*.html`, `*.svg` a11y findings); Trunk's plugin only passes css/graphql/js/json/ts/astro, so those are local-only noise unless configured.
