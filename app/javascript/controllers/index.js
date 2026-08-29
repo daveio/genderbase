@@ -5,4 +5,5 @@
 import { application } from './application'
 
 import QuestionFormController from './question_form_controller'
+
 application.register('question-form', QuestionFormController)
