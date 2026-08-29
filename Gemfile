@@ -50,3 +50,5 @@ group :test do
   gem "selenium-webdriver"   # https://github.com/SeleniumHQ/selenium
   gem "simplecov", require: false # https://github.com/simplecov-ruby/simplecov
 end
+
+gem "ruby-vips", "~> 2.3"
